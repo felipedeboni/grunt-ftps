@@ -1,0 +1,44 @@
+{
+  "name": "grunt-ftps",
+  "description": "Send files through FTP or FTPS",
+  "version": "0.1.0",
+  "homepage": "https://github.com/pkz/grunt-ftps",
+  "author": {
+    "name": "Felipe K. De Boni",
+    "email": "pkz.dev@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/felipedeboni/grunt-ftps.git"
+  },
+  "bugs": {
+    "url": "https://github.com/felipedeboni/grunt-ftps/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/pkz/ftps/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^0.9.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt": "~0.4.5"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.5"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "dependencies": {
+    "underscore": ">=1.4.4"
+  }
+}
