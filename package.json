@@ -1,7 +1,7 @@
 {
   "name": "grunt-ftps",
   "description": "Send files through FTP or FTPS",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/pkz/grunt-ftps",
   "author": {
     "name": "Felipe K. De Boni",
