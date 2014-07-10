@@ -2,6 +2,9 @@
 
 > Send files through FTP or FTPS
 
+## Requirements
+You need to have `lftp` installed and in your system path.
+
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
 
@@ -37,35 +40,41 @@ grunt.initConfig({
 
 ### Options
 
-#### options.host
+#### options.ftp.host
 Type: `String`
 Default value: null
 
 Host to connect
 
-#### options.username
+#### options.ftp.username
 Type: `String`
 Default value: null
 
 User to authenticate
 
-#### options.password
+#### options.ftp.password
 Type: `String`
 Default value: null
 
 The user password
 
-#### options.cmd
+#### options.ftp.cmd
 Type: `String`
 Default value: null
 
 A command to pass in "-e" option of `lftp`
 
-#### options.protocol
+#### options.ftp.protocol
 Type: `String`
 Default value: 'ftps' // optional, values : 'ftp', 'sftp', 'ftps',... default is 'ftp'
 
 A command to pass in "-e" option of `lftp`
+
+#### options.remoteDir
+Type: `String`
+Default value: null
+
+The working directory on remote server ( please note that this directory should exists )
 
 ### Usage Examples
 
