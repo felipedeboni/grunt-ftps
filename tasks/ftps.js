@@ -54,8 +54,11 @@ module.exports = function(grunt) {
     // =============================================================================================
     var ensureDirectories = function() {
       var i = 0;
+      grunt.log.writeln( 'Ensuring directories:' );
 
       var ensureDir = function( dir ) {
+        grunt.log.ok( options.remoteDir + dir );
+
         if ( directoriesChecked.indexOf( dir ) > -1 && ((i + 1) < dirs.length) ) {
           directoriesChecked.push( dir );
           i += 1;
@@ -95,11 +98,12 @@ module.exports = function(grunt) {
           filesFailed = [];
 
       var upload = function( file ) {
+        var destination = _path.join( options.remoteDir, file ).replace(/\\/g, '/');
         grunt.log.writeln( '' );
-        grunt.log.writeln( 'Uploading file: ' + file );
+        grunt.log.writeln( 'Uploading file: ' + destination );
 
         client
-          .put( file, _path.join( options.remoteDir, file ).replace(/\\/g, '/') )
+          .put( file, destination )
           .exec(function( err, res ) {
             if ( err ) {
               grunt.log.warn( 'Upload failed for: ' + file );
@@ -131,7 +135,12 @@ module.exports = function(grunt) {
     // =============================================================================================
     var process = function() {
       connect();
-      ensureDirectories();
+
+      if ( dirs.length > 0 ) {
+        ensureDirectories();
+      } else {
+        uploadFiles();
+      }
     };
 
     var endProcess = function() {
@@ -153,8 +162,14 @@ module.exports = function(grunt) {
         }
       })[0];
 
-      filesToUpload.push( src );
-      dirs.push( _path.dirname(src) );
+      if ( grunt.file.isFile( src ) ) {
+        filesToUpload.push( src );
+      }
+
+      var dirname = _path.dirname(src);
+      if ( dirname !== '.' && dirname !== '..' ) {
+        dirs.push( _path.dirname(src) );
+      }
     });
 
     if ( filesToUpload.length > 0 ) {
